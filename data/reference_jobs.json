@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "description": "Labeled synthetic or sanitized jobs used for deterministic and semantic evaluation.",
+  "jobs": []
+}

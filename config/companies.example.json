@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "companies": [
+    {
+      "id": "example_fintech",
+      "name": "Example Fintech",
+      "active": false,
+      "source_type": "synthetic",
+      "career_url": "https://careers.example.com",
+      "allowed_domains": [
+        "careers.example.com"
+      ],
+      "company_quality_score": 80
+    }
+  ]
+}

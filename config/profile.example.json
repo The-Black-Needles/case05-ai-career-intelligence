@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "profile_id": "synthetic_ai_risk_professional",
+  "weights": {
+    "strategic_relevance": 0.25,
+    "candidate_readiness": 0.25,
+    "company_quality": 0.35,
+    "life_fit": 0.15
+  },
+  "accepted_contracts": [
+    "CLT",
+    "PJ"
+  ],
+  "preferred_work_models": [
+    "remote",
+    "hybrid_flexible"
+  ],
+  "weekly_report": {
+    "max_detailed_jobs": 15,
+    "max_jobs_per_company": 3,
+    "repeat_only_on_material_change": true
+  },
+  "ai_role_archetypes": [
+    "AI_AGENT_ENGINEERING",
+    "AI_BUSINESS_AUTOMATION",
+    "AI_PROCESS_TRANSFORMATION",
+    "AI_DATA_SCIENCE",
+    "AI_PRODUCT_STRATEGY",
+    "AI_PLATFORM_LLMOPS",
+    "AI_SECURITY_GOVERNANCE",
+    "AI_DOMAIN_ANALYTICS"
+  ]
+}
