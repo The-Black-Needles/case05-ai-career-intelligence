@@ -3,9 +3,9 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "case06-ai-job-radar"
+name = "case05-ai-career-intelligence"
 version = "0.1.0"
-description = "Agentic career opportunity intelligence with explainable scoring and human-in-the-loop controls"
+description = "Public scaffold for the Case 05 AI Career Intelligence concept"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []

@@ -1,5 +1,5 @@
 {
   "schema_version": 1,
-  "description": "Labeled synthetic or sanitized jobs used for deterministic and semantic evaluation.",
+  "description": "Empty synthetic placeholder reserved for possible future evaluation fixtures.",
   "jobs": []
 }

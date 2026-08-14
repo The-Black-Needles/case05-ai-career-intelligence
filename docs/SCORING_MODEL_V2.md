@@ -1,86 +1,66 @@
 # Scoring Model V2
 
-## Design principle
+## Status
 
-The model separates opportunity relevance from current candidate readiness.
+**DRAFT_NOT_ACTIVE**
 
-A role can be strategically excellent while still requiring meaningful professional growth.
+This document is conceptual target-state material only. The public scaffold has
+no executable weighted scoring, Candidate Readiness assessment, eligibility
+gate, classification pipeline, report policy, or Decision Model runtime.
 
-## Overall weights
+## Conceptual design principle
 
-| Dimension | Weight |
+A future model could separate opportunity relevance from current candidate
+readiness so that a strategically relevant role is not confused with evidence
+of present readiness. This is a proposal, not an implemented evaluation.
+
+## Conceptual weights
+
+The synthetic example configuration records these draft values:
+
+| Proposed dimension | Draft value |
 |---|---:|
 | Strategic relevance | 25% |
-| Candidate readiness | 25% |
+| Candidate Readiness | 25% |
 | Company quality | 35% |
 | Life fit | 15% |
 
-Objective eligibility gates are evaluated before the weighted score.
+They are configuration examples only. No code applies them, and they do not
+constitute an active weighted score.
 
-## Eligibility gates
+## Conceptual gates and classifications
 
-- Authorized source
-- Active configured company
-- Open job
-- Accepted employment contract
-- Geographic eligibility
-- Compatible affirmative-action eligibility
-- Work authorization
-- Domain allowlist
-- No authentication or CAPTCHA requirement
+Possible target-state gates include source authorization, company activation,
+job status, contract and geographic eligibility, affirmative-action eligibility,
+work authorization, domain policy, and authentication or CAPTCHA constraints.
 
-## AI role archetypes
+Possible target-state classifications include AI role archetype, AI centrality,
+requirement importance, evidence level, gap severity, and confidence. None is
+computed, enforced, or validated by this scaffold.
 
-- `AI_AGENT_ENGINEERING`
-- `AI_BUSINESS_AUTOMATION`
-- `AI_PROCESS_TRANSFORMATION`
-- `AI_DATA_SCIENCE`
-- `AI_PRODUCT_STRATEGY`
-- `AI_PLATFORM_LLMOPS`
-- `AI_SECURITY_GOVERNANCE`
-- `AI_DOMAIN_ANALYTICS`
+## Evidence interpretation invariants
 
-## AI centrality
+Any future design and implementation must preserve all of the following:
 
-- `AI_CORE`
-- `AI_ADJACENT`
-- `AI_CONTEXTUAL`
-- `NONE`
+- declared evidence is not proven capability
+- demonstrable project is not production experience
+- course is not professional experience
+- knowledge is not productive execution
+- absence of evidence is not inability
+- `NO_EVIDENCE` does not automatically imply structural gap
+- empty limitations do not imply unrestricted evidence
+- evidence levels do not silently become numeric weights
+- requirement types do not silently become scoring weights
 
-## Requirement importance
+These rules constrain interpretation; they do not claim that an evidence model
+or its enforcement currently exists.
 
-- `MANDATORY`
-- `PREFERRED`
-- `DIFFERENTIAL`
-- `CONTEXTUAL`
+## Conceptual report policy
 
-## Evidence levels
+A future pilot might cap a weekly report at 15 new or materially changed jobs
+and 3 detailed jobs per company, without requiring the limit to be filled. It
+might omit previously analyzed jobs unless materially changed and exclude
+previously applied jobs from recommendations.
 
-- Professional production experience
-- Demonstrable private or public project
-- Course or certification
-- Development-stage knowledge
-- Conceptual knowledge
-- No evidence
-
-## Gap severity
-
-- `LIGHT`
-- `MODERATE`
-- `STRUCTURAL`
-
-## Confidence
-
-- `HIGH`
-- `MEDIUM`
-- `LOW`
-
-## Weekly-report policy
-
-Initial pilot:
-
-- Maximum of 15 new or materially changed jobs
-- Maximum of 3 detailed jobs from the same company
-- No obligation to fill the limit
-- Previously analyzed jobs are omitted unless materially changed
-- Previously applied jobs cannot return as recommendations
+That policy is **PLANNED / NOT ACTIVE**. This repository does not generate
+reports, track prior analysis or applications, or enforce these limits.

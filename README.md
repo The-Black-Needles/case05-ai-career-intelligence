@@ -1,55 +1,65 @@
-# AI Job Radar
+# Case 05 — AI Career Intelligence
 
-**Agentic Career Opportunity Intelligence**
+**Intelligent Job Opportunity Decision System**
 
-AI Job Radar is an explainable, human-in-the-loop system for discovering, classifying, deduplicating and prioritizing career opportunities from authorized sources.
+AI Career Intelligence is the proposed broader system for supporting transparent,
+evidence-aware career opportunity decisions. **AI Job Radar** is a prospective
+module/concept within that system, intended to discover and organize job
+opportunities if it is implemented in a later increment.
 
-## Current status
+## Current public status
 
-This repository is an initial public-ready scaffold for Case 06.
+This public repository is **only a scaffold**. It contains documentation,
+package metadata, synthetic example configuration, an empty reference dataset,
+and scaffold-level tests. It does not contain an operational decision system.
 
-The operational implementation is being validated separately before the first public release.
+### IMPLEMENTED
 
-## Core capabilities
+- Case 05 public identity and truthful status documentation
+- Python package metadata with no runtime dependencies
+- Synthetic example configuration files
+- An empty reference-job dataset
+- Standard-library scaffold tests
+- A reserved `src/ai_job_radar` package namespace; its presence does not mean an
+  AI Job Radar module is operational
 
-- Incremental collection from authorized career pages and ATS platforms
-- Job normalization and cross-run deduplication
-- Strategic relevance and candidate-readiness analysis
-- AI role archetype classification
-- Explainable multidimensional scoring
-- Material-change detection
-- Weekly opportunity intelligence reports
-- Human approval before every external action
-- Security guardrails and domain allowlists
-- Evaluation with labeled reference jobs
+### PLANNED / NOT ACTIVE
 
-## Decision model
+All operational stages and capabilities are target-state concepts only:
 
-The initial score separates:
+- authorized-source collection
+- normalization and identity resolution
+- cross-run deduplication
+- semantic classification
+- deterministic gates and scoring
+- Candidate Readiness assessment
+- LLM evaluation
+- reporting and change detection
+- security enforcement and audit controls
+- agents or automated actions
+- Decision Model runtime
 
-- Strategic relevance
-- Candidate readiness
-- Company quality
-- Life fit
+No stage above is implemented or active in this public scaffold.
 
-Objective eligibility rules remain deterministic and are evaluated before semantic scoring.
+## Target architecture — PLANNED / NOT ACTIVE
 
-## Safety principles
+The following diagram is architectural intent, not a description of running
+software.
 
-- No automatic applications
-- No automatic recruiter messages
-- No authenticated LinkedIn scraping
-- No CAPTCHA bypass
-- No access outside configured domains
-- No secrets or personal application history in the public repository
-- Human review is mandatory
+```mermaid
+flowchart LR
+    A["Collection<br/>PLANNED / NOT ACTIVE"] --> B["Normalization & deduplication<br/>PLANNED / NOT ACTIVE"]
+    B --> C["Classification & evidence matching<br/>PLANNED / NOT ACTIVE"]
+    C --> D["Decision Model & scoring<br/>PLANNED / NOT ACTIVE"]
+    D --> E["Reporting & human review<br/>PLANNED / NOT ACTIVE"]
+```
 
-## Repository status
+## Public artifacts
 
-The project is currently in the architecture and evaluation-design phase.
+- `docs/CASE05_PUBLIC_BLUEPRINT.md` — truthful architectural and publication blueprint
+- `docs/SCORING_MODEL_V2.md` — `DRAFT_NOT_ACTIVE` target-state scoring notes
+- `config/*.example.json` — synthetic examples, not active configuration
+- `data/reference_jobs.json` — empty placeholder dataset
 
-See:
-
-- `docs/CASE06_PUBLIC_BLUEPRINT.md`
-- `docs/SCORING_MODEL_V2.md`
-- `data/reference_jobs.json`
+The repository makes no claim that collection, analysis, scoring, evaluation,
+reporting, security controls, agents, or a Decision Model runtime exist.
