@@ -17,6 +17,9 @@ class ScaffoldTest(unittest.TestCase):
         cls.scoring = (ROOT / "docs/SCORING_MODEL_V2.md").read_text(
             encoding="utf-8"
         )
+        cls.release_checklist = (
+            ROOT / "docs/PUBLIC_RELEASE_CHECKLIST.md"
+        ).read_text(encoding="utf-8")
         with (ROOT / "pyproject.toml").open("rb") as project_file:
             cls.project = tomllib.load(project_file)["project"]
         cls.profile = json.loads(
@@ -164,6 +167,25 @@ class ScaffoldTest(unittest.TestCase):
         self.assertIn("no executable weighted scoring", self.scoring)
         self.assertIn("Candidate Readiness assessment", self.scoring)
         self.assertIn("No code applies them", self.scoring)
+
+    def test_public_release_checklist_gates_are_documented(self):
+        release_doc = ROOT / "docs/PUBLIC_RELEASE_CHECKLIST.md"
+
+        self.assertTrue(release_doc.is_file())
+        self.assertIn("docs/PUBLIC_RELEASE_CHECKLIST.md", self.readme)
+        self.assertIn("[MIT License](LICENSE)", self.readme)
+        self.assertTrue((ROOT / "LICENSE").is_file())
+        for command in (
+            "PYTHONPATH=src python3 -m unittest discover -s tests",
+            "PYTHONPATH=src python3 -m ai_job_radar.public_sanitizer",
+        ):
+            with self.subTest(command=command):
+                self.assertIn(command, self.readme)
+                self.assertIn(command, self.release_checklist)
+        lowered = self.release_checklist.casefold()
+        self.assertIn("public scaffold", lowered)
+        self.assertIn("current candidate only", lowered)
+        self.assertIn("mit license", lowered)
 
     def test_reference_dataset_is_empty(self):
         reference = json.loads(

@@ -7,6 +7,16 @@ evidence-aware career opportunity decisions. **AI Job Radar** is a prospective
 module/concept within that system, intended to discover and organize job
 opportunities if it is implemented in a later increment.
 
+## Quickstart
+
+This repository requires Python 3.11 or newer and currently exposes a public
+scaffold rather than a runnable job-discovery product. From the repository root,
+run the scaffold test suite:
+
+```sh
+PYTHONPATH=src python3 -m unittest discover -s tests
+```
+
 ## Current public status
 
 This public repository is **only a scaffold and narrow, non-operational public
@@ -63,9 +73,12 @@ flowchart LR
 
 - `docs/CASE05_PUBLIC_BLUEPRINT.md` — truthful architectural and publication blueprint
 - `docs/SCORING_MODEL_V2.md` — `DRAFT_NOT_ACTIVE` target-state scoring notes
+- `docs/PUBLIC_RELEASE_CHECKLIST.md` — public-release scope, gates, and maintainer checklist
 - `config/*.example.json` — synthetic examples, not active configuration
 - `data/reference_jobs.json` — empty placeholder dataset
 - `src/ai_job_radar/job_record.py` — immutable in-memory public record contract
+
+This repository is available under the [MIT License](LICENSE).
 
 The record contract does not establish an operational AI Job Radar. The
 repository makes no claim that collection, loading, transformation,
@@ -73,3 +86,16 @@ normalization, enrichment, deduplication, classification,
 requirement/evidence matching, Candidate Readiness, scoring, ranking,
 recommendation, LLM evaluation, reporting, security controls, agents, or a
 Decision Model runtime exist.
+
+## Release verification
+
+Run these checks from the repository root before publishing a candidate:
+
+```sh
+PYTHONPATH=src python3 -m unittest discover -s tests
+PYTHONPATH=src python3 -m ai_job_radar.public_sanitizer
+```
+
+Both commands must pass. The sanitizer inspects tracked files and untracked,
+non-ignored files in the current publication candidate; it does not inspect Git
+history or replace human review.
