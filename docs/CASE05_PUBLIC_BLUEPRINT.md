@@ -10,7 +10,7 @@ product or operational module in this repository.
 
 ## Publication status
 
-**PUBLIC SCAFFOLD ONLY**
+**PUBLIC SCAFFOLD AND NARROW NON-OPERATIONAL FOUNDATION ONLY**
 
 ### IMPLEMENTED
 
@@ -21,14 +21,20 @@ product or operational module in this repository.
 - Scaffold-level tests
 - A narrow, fail-closed public-release sanitization check for the current
   publication candidate
+- A strict, immutable, in-memory `PublicJobRecord` contract using only the
+  Python standard library; it preserves supplied valid values and rejects
+  invalid ones
 
 ### PLANNED / NOT ACTIVE
 
-The target architecture may eventually include authorized collection,
-normalization, identity resolution, deduplication, eligibility gates, semantic
-classification, evidence matching, scoring, Candidate Readiness, LLM evaluation,
-report generation, security enforcement, agents, and a Decision Model runtime.
-None of those capabilities is implemented or active here.
+The target architecture may eventually include authorized collection, loading,
+transformation, normalization, enrichment, identity resolution, deduplication,
+eligibility gates, semantic classification, requirement/evidence matching,
+scoring, ranking, recommendation, Candidate Readiness, LLM evaluation, report
+generation, security enforcement, agents, and a Decision Model runtime. None of
+those capabilities is implemented or active here. The record contract adds no
+parsing, serialization, fingerprints, deduplication keys, enums, AI behavior,
+or runtime pipeline and does not establish an operational AI Job Radar.
 
 The implemented public-release sanitization check is intentionally separate
 from this planned operational security enforcement. It only inspects the

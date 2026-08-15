@@ -69,14 +69,21 @@ class ScaffoldTest(unittest.TestCase):
 
     def test_status_is_explicit_and_truthful(self):
         self.assertIn("only a scaffold", self.readme)
+        self.assertIn("in-memory `PublicJobRecord` contract", self.readme)
+        self.assertIn("does not establish an operational AI Job Radar", self.readme)
         implemented = self.readme_section("IMPLEMENTED").casefold()
         planned = self.readme_section("PLANNED / NOT ACTIVE").casefold()
         operational_capabilities = (
             "collection",
             "normalization",
+            "loading",
+            "transformation",
             "deduplication",
             "semantic classification",
+            "requirement/evidence matching",
             "scoring",
+            "ranking",
+            "recommendation",
             "candidate readiness",
             "llm evaluation",
             "reporting",
@@ -86,6 +93,33 @@ class ScaffoldTest(unittest.TestCase):
         )
 
         for capability in operational_capabilities:
+            with self.subTest(capability=capability):
+                self.assertNotIn(capability, implemented)
+                self.assertIn(capability, planned)
+
+    def test_public_job_record_is_the_only_added_foundation_contract(self):
+        implemented = self.blueprint_section("IMPLEMENTED").casefold()
+        planned = self.blueprint_section("PLANNED / NOT ACTIVE").casefold()
+        self.assertIn("in-memory `publicjobrecord` contract", implemented)
+        self.assertIn("preserves supplied valid values", implemented)
+        for capability in (
+            "collection",
+            "loading",
+            "transformation",
+            "normalization",
+            "deduplication",
+            "classification",
+            "requirement/evidence matching",
+            "candidate readiness",
+            "scoring",
+            "ranking",
+            "recommendation",
+            "llm evaluation",
+            "report",
+            "agents",
+            "security enforcement",
+            "decision model runtime",
+        ):
             with self.subTest(capability=capability):
                 self.assertNotIn(capability, implemented)
                 self.assertIn(capability, planned)

@@ -9,9 +9,11 @@ opportunities if it is implemented in a later increment.
 
 ## Current public status
 
-This public repository is **only a scaffold**. It contains documentation,
-package metadata, synthetic example configuration, an empty reference dataset,
-and scaffold-level tests. It does not contain an operational decision system.
+This public repository is **only a scaffold and narrow, non-operational public
+foundation**. It contains documentation, package metadata, synthetic example
+configuration, an empty reference dataset, scaffold-level tests, and an
+in-memory `PublicJobRecord` contract. It does not contain an operational AI Job
+Radar or decision system.
 
 ### IMPLEMENTED
 
@@ -21,6 +23,8 @@ and scaffold-level tests. It does not contain an operational decision system.
 - An empty reference-job dataset
 - Standard-library scaffold tests
 - A standard-library public-release sanitization check for the publication candidate
+- A strict standard-library in-memory `PublicJobRecord` value contract; it does
+  not load, transform, normalize, enrich, or process records
 - A reserved `src/ai_job_radar` package namespace; its presence does not mean an
   AI Job Radar module is operational
 
@@ -29,10 +33,10 @@ and scaffold-level tests. It does not contain an operational decision system.
 All operational stages and capabilities are target-state concepts only:
 
 - authorized-source collection
-- normalization and identity resolution
+- loading, transformation, normalization, enrichment, and identity resolution
 - cross-run deduplication
-- semantic classification
-- deterministic gates and scoring
+- semantic classification and requirement/evidence matching
+- deterministic gates, scoring, ranking, and recommendation
 - Candidate Readiness assessment
 - LLM evaluation
 - reporting and change detection
@@ -61,6 +65,11 @@ flowchart LR
 - `docs/SCORING_MODEL_V2.md` — `DRAFT_NOT_ACTIVE` target-state scoring notes
 - `config/*.example.json` — synthetic examples, not active configuration
 - `data/reference_jobs.json` — empty placeholder dataset
+- `src/ai_job_radar/job_record.py` — immutable in-memory public record contract
 
-The repository makes no claim that collection, analysis, scoring, evaluation,
-reporting, security controls, agents, or a Decision Model runtime exist.
+The record contract does not establish an operational AI Job Radar. The
+repository makes no claim that collection, loading, transformation,
+normalization, enrichment, deduplication, classification,
+requirement/evidence matching, Candidate Readiness, scoring, ranking,
+recommendation, LLM evaluation, reporting, security controls, agents, or a
+Decision Model runtime exist.
