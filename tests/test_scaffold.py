@@ -11,6 +11,9 @@ class ScaffoldTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        cls.blueprint = (ROOT / "docs/CASE05_PUBLIC_BLUEPRINT.md").read_text(
+            encoding="utf-8"
+        )
         cls.scoring = (ROOT / "docs/SCORING_MODEL_V2.md").read_text(
             encoding="utf-8"
         )
@@ -20,13 +23,13 @@ class ScaffoldTest(unittest.TestCase):
             (ROOT / "config/profile.example.json").read_text(encoding="utf-8")
         )
 
-    def readme_section(self, heading):
+    def document_section(self, document, heading):
         marker = f"### {heading}"
-        lines = self.readme.splitlines()
+        lines = document.splitlines()
         try:
             start = lines.index(marker) + 1
         except ValueError:
-            self.fail(f"README section is missing: {marker}")
+            self.fail(f"Document section is missing: {marker}")
 
         end = next(
             (
@@ -39,6 +42,12 @@ class ScaffoldTest(unittest.TestCase):
             len(lines),
         )
         return "\n".join(lines[start:end])
+
+    def readme_section(self, heading):
+        return self.document_section(self.readme, heading)
+
+    def blueprint_section(self, heading):
+        return self.document_section(self.blueprint, heading)
 
     def test_case_05_identity_and_blueprint_rename(self):
         identity = (
@@ -80,6 +89,41 @@ class ScaffoldTest(unittest.TestCase):
             with self.subTest(capability=capability):
                 self.assertNotIn(capability, implemented)
                 self.assertIn(capability, planned)
+
+    def test_blueprint_truthfully_distinguishes_publication_guard(self):
+        implemented = " ".join(
+            self.blueprint_section("IMPLEMENTED").casefold().split()
+        )
+        planned = " ".join(
+            self.blueprint_section("PLANNED / NOT ACTIVE").casefold().split()
+        )
+
+        self.assertIn("public-release sanitization check", implemented)
+        self.assertNotIn("security enforcement", implemented)
+        self.assertNotIn("production security system", implemented)
+        self.assertNotIn(
+            "operational career-intelligence capability",
+            implemented,
+        )
+        self.assertNotIn("decision model runtime", implemented)
+
+        self.assertIn("security enforcement", planned)
+        self.assertIn(
+            "the implemented public-release sanitization check is "
+            "intentionally separate from this planned operational "
+            "security enforcement.",
+            planned,
+        )
+        self.assertIn(
+            "it only inspects the current publication candidate; it is "
+            "not a production security system, an operational "
+            "career-intelligence capability, or a decision model runtime.",
+            planned,
+        )
+        self.assertIn(
+            "decision model v2 remains `draft_not_active`.",
+            planned,
+        )
 
     def test_scoring_model_is_draft_without_runtime_claims(self):
         self.assertIn("DRAFT_NOT_ACTIVE", self.scoring)

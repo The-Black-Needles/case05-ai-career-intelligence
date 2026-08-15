@@ -19,6 +19,8 @@ product or operational module in this repository.
 - Synthetic example configuration
 - Empty reference-job dataset
 - Scaffold-level tests
+- A narrow, fail-closed public-release sanitization check for the current
+  publication candidate
 
 ### PLANNED / NOT ACTIVE
 
@@ -27,6 +29,12 @@ normalization, identity resolution, deduplication, eligibility gates, semantic
 classification, evidence matching, scoring, Candidate Readiness, LLM evaluation,
 report generation, security enforcement, agents, and a Decision Model runtime.
 None of those capabilities is implemented or active here.
+
+The implemented public-release sanitization check is intentionally separate
+from this planned operational security enforcement. It only inspects the
+current publication candidate; it is not a production security system, an
+operational career-intelligence capability, or a Decision Model runtime.
+Decision Model V2 remains `DRAFT_NOT_ACTIVE`.
 
 ## Target architecture
 
