@@ -20,6 +20,7 @@ and scaffold-level tests. It does not contain an operational decision system.
 - Synthetic example configuration files
 - An empty reference-job dataset
 - Standard-library scaffold tests
+- A standard-library public-release sanitization check for the publication candidate
 - A reserved `src/ai_job_radar` package namespace; its presence does not mean an
   AI Job Radar module is operational
 

@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "synthetic": true,
   "companies": [
     {
       "id": "example_fintech",

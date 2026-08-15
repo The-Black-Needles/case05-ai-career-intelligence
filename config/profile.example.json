@@ -1,5 +1,6 @@
 {
   "schema_version": 2,
+  "synthetic": true,
   "profile_id": "synthetic_ai_risk_professional",
   "weights": {
     "strategic_relevance": 0.25,

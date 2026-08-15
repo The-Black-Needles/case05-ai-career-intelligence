@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "synthetic": true,
   "description": "Empty synthetic placeholder reserved for possible future evaluation fixtures.",
   "jobs": []
 }
