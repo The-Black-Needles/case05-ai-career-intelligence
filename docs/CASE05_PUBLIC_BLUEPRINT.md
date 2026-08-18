@@ -42,6 +42,15 @@ current publication candidate; it is not a production security system, an
 operational career-intelligence capability, or a Decision Model runtime.
 Decision Model V2 remains `DRAFT_NOT_ACTIVE`.
 
+### P5B requirement/evidence demo contract
+
+`docs/REQUIREMENT_EVIDENCE_DEMO_CONTRACT.md` is
+`DESIGN_CONTRACT_ONLY`: a future deterministic, explicit-ID
+requirement/evidence linkage contract. It does not implement a runtime,
+activate Decision Model V2, scoring, recommendation, semantic matching, or AI
+functionality. The repository remains a non-operational scaffold until code
+and synthetic fixtures implement and validate that contract.
+
 ## Target architecture
 
 Every stage in this target flow is **PLANNED / NOT ACTIVE**:

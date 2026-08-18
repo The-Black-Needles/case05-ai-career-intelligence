@@ -17,6 +17,9 @@ class ScaffoldTest(unittest.TestCase):
         cls.scoring = (ROOT / "docs/SCORING_MODEL_V2.md").read_text(
             encoding="utf-8"
         )
+        cls.requirement_evidence_contract = (
+            ROOT / "docs/REQUIREMENT_EVIDENCE_DEMO_CONTRACT.md"
+        ).read_text(encoding="utf-8")
         cls.release_checklist = (
             ROOT / "docs/PUBLIC_RELEASE_CHECKLIST.md"
         ).read_text(encoding="utf-8")
@@ -26,8 +29,8 @@ class ScaffoldTest(unittest.TestCase):
             (ROOT / "config/profile.example.json").read_text(encoding="utf-8")
         )
 
-    def document_section(self, document, heading):
-        marker = f"### {heading}"
+    def document_section(self, document, heading, level=3):
+        marker = f"{'#' * level} {heading}"
         lines = document.splitlines()
         try:
             start = lines.index(marker) + 1
@@ -38,9 +41,10 @@ class ScaffoldTest(unittest.TestCase):
             (
                 index
                 for index in range(start, len(lines))
-                if lines[index].startswith("### ")
-                or lines[index].startswith("## ")
-                or lines[index].startswith("# ")
+                if any(
+                    lines[index].startswith(f"{'#' * heading_level} ")
+                    for heading_level in range(1, level + 1)
+                )
             ),
             len(lines),
         )
@@ -51,6 +55,11 @@ class ScaffoldTest(unittest.TestCase):
 
     def blueprint_section(self, heading):
         return self.document_section(self.blueprint, heading)
+
+    def contract_section(self, heading):
+        return self.document_section(
+            self.requirement_evidence_contract, heading, level=2
+        )
 
     def test_case_05_identity_and_blueprint_rename(self):
         identity = (
@@ -167,6 +176,63 @@ class ScaffoldTest(unittest.TestCase):
         self.assertIn("no executable weighted scoring", self.scoring)
         self.assertIn("Candidate Readiness assessment", self.scoring)
         self.assertIn("No code applies them", self.scoring)
+
+    def test_requirement_evidence_contract_is_future_only_and_factual(self):
+        status = self.contract_section("Status")
+        purpose = self.contract_section("Purpose and boundary")
+        linkage = self.document_section(
+            self.requirement_evidence_contract,
+            "Explicit linkage and validation",
+        )
+        assessment = self.contract_section("Future factual assessment")
+        output = self.contract_section("Human review and output")
+        command = self.contract_section("Proposed future command")
+        status, purpose, linkage, assessment, output, command = (
+            " ".join(section.split())
+            for section in (status, purpose, linkage, assessment, output, command)
+        )
+
+        self.assertIn("DESIGN_CONTRACT_ONLY", status)
+        self.assertIn("not an implemented capability", status)
+        self.assertIn("non-operational scaffold", status)
+        self.assertIn("PROPOSED_NOT_IMPLEMENTED", command)
+        self.assertIn("must not be described as working", command)
+
+        self.assertIn("explicit linkage by IDs", purpose)
+        self.assertIn("Explicit IDs are the only matching mechanism", linkage)
+        self.assertIn("no semantic matching", linkage)
+
+        self.assertIn("EXPLICIT_EVIDENCE_LINKED", assessment)
+        self.assertIn("NO_EXPLICIT_EVIDENCE_LINK", assessment)
+        self.assertIn("does not mean the requirement is satisfied", assessment)
+        self.assertIn(
+            "does not mean the candidate lacks a skill or capability", assessment
+        )
+        self.assertIn("must never be interpreted as an absence of capability", assessment)
+
+        self.assertIn("aggregate raw counts by requirement type", assessment)
+        self.assertIn("must not produce a readiness", assessment)
+        self.assertIn("It has no scoring, readiness calculation", purpose)
+        self.assertIn("`SCORING_MODEL_V2` is not activated", purpose)
+        self.assertIn("`DRAFT_NOT_ACTIVE`", purpose)
+
+        self.assertIn(
+            "produces none of the following candidate/job recommendation", output
+        )
+        self.assertIn("`APPLY`", output)
+        self.assertIn("`ELIGIBLE`", output)
+        self.assertIn("`READY`", output)
+        self.assertIn("not candidate assessments", output)
+
+        self.assertIn("HUMAN_REVIEW_REQUIRED=YES", output)
+        self.assertIn("reviewer remains responsible", output)
+        self.assertIn("evidence is relevant, sufficient, and persuasive", output)
+
+        self.assertIn("no semantic inference or automatic matching", purpose)
+        self.assertIn("No LLM, embeddings, classifier, agent", purpose)
+        self.assertIn("AI-assisted feature is part of this contract", purpose)
+        self.assertIn("DESIGN_CONTRACT_ONLY", self.blueprint)
+        self.assertIn("non-operational scaffold", self.blueprint)
 
     def test_public_release_checklist_gates_are_documented(self):
         release_doc = ROOT / "docs/PUBLIC_RELEASE_CHECKLIST.md"
