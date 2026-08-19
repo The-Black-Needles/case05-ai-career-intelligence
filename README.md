@@ -9,9 +9,19 @@ opportunities if it is implemented in a later increment.
 
 ## Quickstart
 
-This repository requires Python 3.11 or newer and currently exposes a public
-scaffold rather than a runnable job-discovery product. From the repository root,
-run the scaffold test suite:
+This repository requires Python 3.11 or newer. It provides a small local,
+synthetic requirement/evidence assessment demo; it is not a job-discovery
+product. From the repository root, run the demo:
+
+```sh
+PYTHONPATH=src python3 -m ai_job_radar.demo --assessment data/demo_assessment.json
+```
+
+The deterministic JSON output preserves supplied requirement statements and
+explicit evidence IDs, reports only factual linkage states and raw counts, and
+always requires human review. It demonstrates strict data contracts,
+traceability, reproducibility, and a public/private boundary without collecting
+or processing real jobs. Run the scaffold test suite with:
 
 ```sh
 PYTHONPATH=src python3 -m unittest discover -s tests
@@ -19,11 +29,11 @@ PYTHONPATH=src python3 -m unittest discover -s tests
 
 ## Current public status
 
-This public repository is **only a scaffold and narrow, non-operational public
-foundation**. It contains documentation, package metadata, synthetic example
-configuration, an empty reference dataset, scaffold-level tests, and an
-in-memory `PublicJobRecord` contract. It does not contain an operational AI Job
-Radar or decision system.
+This public repository is a **narrow public foundation with one local synthetic
+demo**. It contains documentation, package metadata, synthetic example
+configuration, an empty reference dataset, scaffold-level tests, an in-memory
+`PublicJobRecord` contract, and a deterministic requirement/evidence demo. It
+does not contain an operational AI Job Radar or decision system.
 
 ### IMPLEMENTED
 
@@ -35,12 +45,15 @@ Radar or decision system.
 - A standard-library public-release sanitization check for the publication candidate
 - A strict standard-library in-memory `PublicJobRecord` value contract; it does
   not load, transform, normalize, enrich, or process records
+- A local, deterministic synthetic requirement/evidence assessment demo with
+  strict validation, explicit ID linkage, factual raw counts, and mandatory
+  human review
 - A reserved `src/ai_job_radar` package namespace; its presence does not mean an
   AI Job Radar module is operational
 
 ### PLANNED / NOT ACTIVE
 
-All operational stages and capabilities are target-state concepts only:
+All broader operational stages and capabilities are target-state concepts only:
 
 - authorized-source collection
 - loading, transformation, normalization, enrichment, and identity resolution
@@ -54,7 +67,8 @@ All operational stages and capabilities are target-state concepts only:
 - agents or automated actions
 - Decision Model runtime
 
-No stage above is implemented or active in this public scaffold.
+The local demo performs no real-job collection, semantic matching, scoring,
+readiness, ranking, recommendation, LLM/agent runtime, or production activity.
 
 ## Target architecture — PLANNED / NOT ACTIVE
 
@@ -77,13 +91,16 @@ flowchart LR
 - `config/*.example.json` — synthetic examples, not active configuration
 - `data/reference_jobs.json` — empty placeholder dataset
 - `src/ai_job_radar/job_record.py` — immutable in-memory public record contract
+- `src/ai_job_radar/requirement_evidence.py` — deterministic synthetic
+  requirement/evidence validation and factual assessment
+- `data/demo_assessment.json` — public-safe synthetic demo fixture
 
 This repository is available under the [MIT License](LICENSE).
 
-The record contract does not establish an operational AI Job Radar. The
+The demo and record contract do not establish an operational AI Job Radar. The
 repository makes no claim that collection, loading, transformation,
 normalization, enrichment, deduplication, classification,
-requirement/evidence matching, Candidate Readiness, scoring, ranking,
+semantic requirement/evidence matching, Candidate Readiness, scoring, ranking,
 recommendation, LLM evaluation, reporting, security controls, agents, or a
 Decision Model runtime exist.
 

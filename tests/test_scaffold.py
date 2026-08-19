@@ -80,9 +80,9 @@ class ScaffoldTest(unittest.TestCase):
         self.assertEqual(self.project["dependencies"], [])
 
     def test_status_is_explicit_and_truthful(self):
-        self.assertIn("only a scaffold", self.readme)
-        self.assertIn("in-memory `PublicJobRecord` contract", self.readme)
-        self.assertIn("does not establish an operational AI Job Radar", self.readme)
+        self.assertIn("local,\nsynthetic requirement/evidence assessment demo", self.readme)
+        self.assertIn("in-memory\n`PublicJobRecord` contract", self.readme)
+        self.assertIn("do not establish an operational AI Job Radar", self.readme)
         implemented = self.readme_section("IMPLEMENTED").casefold()
         planned = self.readme_section("PLANNED / NOT ACTIVE").casefold()
         operational_capabilities = (
@@ -92,7 +92,7 @@ class ScaffoldTest(unittest.TestCase):
             "transformation",
             "deduplication",
             "semantic classification",
-            "requirement/evidence matching",
+            "semantic classification and requirement/evidence matching",
             "scoring",
             "ranking",
             "recommendation",
@@ -109,11 +109,12 @@ class ScaffoldTest(unittest.TestCase):
                 self.assertNotIn(capability, implemented)
                 self.assertIn(capability, planned)
 
-    def test_public_job_record_is_the_only_added_foundation_contract(self):
+    def test_public_foundation_contracts_have_narrow_boundaries(self):
         implemented = self.blueprint_section("IMPLEMENTED").casefold()
         planned = self.blueprint_section("PLANNED / NOT ACTIVE").casefold()
         self.assertIn("in-memory `publicjobrecord` contract", implemented)
         self.assertIn("preserves supplied valid values", implemented)
+        self.assertIn("local deterministic synthetic requirement/evidence assessment demo", implemented)
         for capability in (
             "collection",
             "loading",
@@ -121,7 +122,7 @@ class ScaffoldTest(unittest.TestCase):
             "normalization",
             "deduplication",
             "classification",
-            "requirement/evidence matching",
+            "semantic matching",
             "candidate readiness",
             "scoring",
             "ranking",
@@ -177,26 +178,26 @@ class ScaffoldTest(unittest.TestCase):
         self.assertIn("Candidate Readiness assessment", self.scoring)
         self.assertIn("No code applies them", self.scoring)
 
-    def test_requirement_evidence_contract_is_future_only_and_factual(self):
+    def test_requirement_evidence_contract_is_local_and_factual(self):
         status = self.contract_section("Status")
         purpose = self.contract_section("Purpose and boundary")
         linkage = self.document_section(
             self.requirement_evidence_contract,
             "Explicit linkage and validation",
         )
-        assessment = self.contract_section("Future factual assessment")
+        assessment = self.contract_section("Implemented factual assessment")
         output = self.contract_section("Human review and output")
-        command = self.contract_section("Proposed future command")
+        command = self.contract_section("Implemented local command")
         status, purpose, linkage, assessment, output, command = (
             " ".join(section.split())
             for section in (status, purpose, linkage, assessment, output, command)
         )
 
-        self.assertIn("DESIGN_CONTRACT_ONLY", status)
-        self.assertIn("not an implemented capability", status)
-        self.assertIn("non-operational scaffold", status)
-        self.assertIn("PROPOSED_NOT_IMPLEMENTED", command)
-        self.assertIn("must not be described as working", command)
+        self.assertIn("IMPLEMENTATION_STATUS=IMPLEMENTED_LOCAL_DEMO", status)
+        self.assertIn("P5B froze this design contract", status)
+        self.assertIn("non-production", status)
+        self.assertIn("data/demo_assessment.json", command)
+        self.assertIn("not production-ready", command)
 
         self.assertIn("explicit linkage by IDs", purpose)
         self.assertIn("Explicit IDs are the only matching mechanism", linkage)
@@ -231,8 +232,27 @@ class ScaffoldTest(unittest.TestCase):
         self.assertIn("no semantic inference or automatic matching", purpose)
         self.assertIn("No LLM, embeddings, classifier, agent", purpose)
         self.assertIn("AI-assisted feature is part of this contract", purpose)
-        self.assertIn("DESIGN_CONTRACT_ONLY", self.blueprint)
-        self.assertIn("non-operational scaffold", self.blueprint)
+        self.assertIn("IMPLEMENTATION_STATUS=IMPLEMENTED_LOCAL_DEMO", self.blueprint)
+        self.assertIn("Human review remains mandatory", self.blueprint)
+
+    def test_readme_documents_only_the_local_synthetic_demo(self):
+        command = (
+            "PYTHONPATH=src python3 -m ai_job_radar.demo "
+            "--assessment data/demo_assessment.json"
+        )
+        self.assertIn(command, self.readme)
+        lowered = self.readme.casefold()
+        for phrase in (
+            "local,\nsynthetic",
+            "no real-job collection",
+            "semantic matching",
+            "scoring",
+            "recommendation",
+            "llm/agent runtime",
+            "production activity",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, lowered)
 
     def test_public_release_checklist_gates_are_documented(self):
         release_doc = ROOT / "docs/PUBLIC_RELEASE_CHECKLIST.md"

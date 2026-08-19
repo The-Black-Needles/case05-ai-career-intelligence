@@ -2,11 +2,13 @@
 
 ## Status
 
-**DESIGN_CONTRACT_ONLY**
+**IMPLEMENTATION_STATUS=IMPLEMENTED_LOCAL_DEMO**
 
-This is a future operational-demo contract, not an implemented capability. The
-repository remains a non-operational scaffold until executable code and
-synthetic fixtures implementing this contract exist and pass validation.
+P5B froze this design contract as `DESIGN_CONTRACT_ONLY`. P5C implements only
+its narrow deterministic synthetic subset locally: strict validation, explicit
+ID linkage, factual linkage states, raw counts, and mandatory human review.
+It is non-production and does not activate collection, semantic matching,
+scoring, recommendation, AI/LLM, or agents.
 
 ## Purpose and boundary
 
@@ -20,7 +22,7 @@ candidate/job decision. `SCORING_MODEL_V2` is not activated by this contract
 and remains `DRAFT_NOT_ACTIVE`. No LLM, embeddings, classifier, agent,
 external service, or AI-assisted feature is part of this contract.
 
-## Future input bundle
+## Implemented input bundle
 
 One deterministic synthetic assessment bundle should contain an assessment ID,
 requirements, candidate evidence, and explicit requirement/evidence links.
@@ -60,7 +62,7 @@ requirement, a missing linkage record for a declared requirement, and malformed
 types. Explicit IDs are the only matching mechanism; the first slice performs
 no semantic matching.
 
-## Future factual assessment
+## Implemented factual assessment
 
 After validation, a requirement may have only one of these factual linkage
 states:
@@ -74,7 +76,7 @@ states:
   the requirement is impossible to satisfy, or the candidate is unsuitable.
 
 The absence of an explicit evidence link must never be interpreted as an
-absence of capability.
+absence of capability: `NO_EXPLICIT_EVIDENCE_LINK != NO_CAPABILITY`.
 
 The future demo may aggregate raw counts by requirement type, including counts
 of requirements with and without explicit evidence links. For example, a
@@ -109,11 +111,9 @@ evidence records, proprietary scoring logic or prompts, local paths, or
 credentials. If URLs are ever introduced, they must use reserved example
 domains.
 
-## Proposed future command
+## Implemented local command
 
-`PYTHONPATH=src python3 -m ai_job_radar.demo --assessment data/demo/assessment.json`
+`PYTHONPATH=src python3 -m ai_job_radar.demo --assessment data/demo_assessment.json`
 
-**PROPOSED_NOT_IMPLEMENTED.** It must not be described as working until a
-fresh clone can execute the documented synthetic flow and generate
-deterministic output from code. P5B alone does not meet that criterion for an
-operational local demo.
+This command executes the public-safe local synthetic flow deterministically.
+It is not production-ready and does not establish an operational AI Job Radar.

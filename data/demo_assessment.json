@@ -1,0 +1,62 @@
+{
+  "assessment_id": "synthetic_requirement_evidence_demo_v1",
+  "candidate_evidence": [
+    {
+      "evidence_id": "evidence_synthetic_component_work",
+      "statement": "Synthetic example: built a small component with documented checks."
+    },
+    {
+      "evidence_id": "evidence_synthetic_review_note",
+      "statement": "Synthetic example: wrote a concise technical review note."
+    }
+  ],
+  "links": [
+    {
+      "evidence_ids": [
+        "evidence_synthetic_component_work"
+      ],
+      "requirement_id": "requirement_synthetic_core"
+    },
+    {
+      "evidence_ids": [
+        "evidence_synthetic_component_work",
+        "evidence_synthetic_review_note"
+      ],
+      "requirement_id": "requirement_synthetic_quality"
+    },
+    {
+      "evidence_ids": [],
+      "requirement_id": "requirement_synthetic_exploration"
+    },
+    {
+      "evidence_ids": [
+        "evidence_synthetic_review_note"
+      ],
+      "requirement_id": "requirement_synthetic_context"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "requirement_synthetic_core",
+      "requirement_type": "MANDATORY",
+      "statement": "Synthetic technical task: create a small deterministic component."
+    },
+    {
+      "requirement_id": "requirement_synthetic_quality",
+      "requirement_type": "PREFERRED",
+      "statement": "Synthetic technical task: document observable checks."
+    },
+    {
+      "requirement_id": "requirement_synthetic_exploration",
+      "requirement_type": "DIFFERENTIAL",
+      "statement": "Synthetic technical task: explore an optional constrained improvement."
+    },
+    {
+      "requirement_id": "requirement_synthetic_context",
+      "requirement_type": "CONTEXTUAL",
+      "statement": "Synthetic context: communicate a concise review note."
+    }
+  ],
+  "schema_version": 1,
+  "synthetic": true
+}

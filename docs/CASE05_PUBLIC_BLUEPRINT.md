@@ -10,7 +10,7 @@ product or operational module in this repository.
 
 ## Publication status
 
-**PUBLIC SCAFFOLD AND NARROW NON-OPERATIONAL FOUNDATION ONLY**
+**PUBLIC FOUNDATION WITH A NARROW LOCAL SYNTHETIC DEMO ONLY**
 
 ### IMPLEMENTED
 
@@ -24,6 +24,9 @@ product or operational module in this repository.
 - A strict, immutable, in-memory `PublicJobRecord` contract using only the
   Python standard library; it preserves supplied valid values and rejects
   invalid ones
+- A local deterministic synthetic requirement/evidence assessment demo using
+  strict validation, explicit ID linkage, factual raw counts, and mandatory
+  human review
 
 ### PLANNED / NOT ACTIVE
 
@@ -32,7 +35,9 @@ transformation, normalization, enrichment, identity resolution, deduplication,
 eligibility gates, semantic classification, requirement/evidence matching,
 scoring, ranking, recommendation, Candidate Readiness, LLM evaluation, report
 generation, security enforcement, agents, and a Decision Model runtime. None of
-those capabilities is implemented or active here. The record contract adds no
+those broader capabilities is implemented or active here. The local demo adds
+no real-job collection, semantic matching, scoring, readiness, ranking,
+recommendation, AI/LLM, or agent runtime. The record contract adds no
 parsing, serialization, fingerprints, deduplication keys, enums, AI behavior,
 or runtime pipeline and does not establish an operational AI Job Radar.
 
@@ -42,14 +47,13 @@ current publication candidate; it is not a production security system, an
 operational career-intelligence capability, or a Decision Model runtime.
 Decision Model V2 remains `DRAFT_NOT_ACTIVE`.
 
-### P5B requirement/evidence demo contract
+### P5C local requirement/evidence demo
 
-`docs/REQUIREMENT_EVIDENCE_DEMO_CONTRACT.md` is
-`DESIGN_CONTRACT_ONLY`: a future deterministic, explicit-ID
-requirement/evidence linkage contract. It does not implement a runtime,
-activate Decision Model V2, scoring, recommendation, semantic matching, or AI
-functionality. The repository remains a non-operational scaffold until code
-and synthetic fixtures implement and validate that contract.
+`docs/REQUIREMENT_EVIDENCE_DEMO_CONTRACT.md` has
+`IMPLEMENTATION_STATUS=IMPLEMENTED_LOCAL_DEMO`: a deterministic local,
+synthetic explicit-ID requirement/evidence linkage demo. It does not activate
+Decision Model V2, collection, semantic matching, scoring, readiness, ranking,
+recommendation, or AI functionality. Human review remains mandatory.
 
 ## Target architecture
 
