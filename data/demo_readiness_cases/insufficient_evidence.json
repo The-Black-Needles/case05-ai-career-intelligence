@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "assessment_id": "synthetic_insufficient_evidence",
+  "coverage_state": "PARTIAL",
+  "requirements": [
+    {"requirement_id": "r1", "statement": "Fictional role: document an automation workflow.", "centrality": "CENTRAL", "evidence_expectation": "GENERAL"}
+  ],
+  "candidate_evidence": [
+    {"evidence_id": "e1", "statement": "Fictional project: documented a small automation workflow.", "evidence_level": "PROJECT", "production_scope": "NOT_PRODUCTION", "limitations": []}
+  ],
+  "links": [
+    {"requirement_id": "r1", "evidence_ids": ["e1"], "support_state": "DIRECT"}
+  ]
+}

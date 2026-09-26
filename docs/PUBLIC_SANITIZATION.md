@@ -22,7 +22,8 @@ enumeration and other internal scanner failures also fail closed.
 
 ## Synthetic provenance contract
 
-`config/*.example.json` and `data/*.json` are designated synthetic fixtures.
+`config/*.example.json`, `data/*.json`, and
+`data/demo_readiness_cases/*.json` are designated synthetic fixtures.
 Each must be parseable JSON with a top-level object, an integer
 `schema_version`, and `synthetic` set to the JSON boolean `true`. Unknown domain
 fields are allowed. HTTP(S) URLs in these fixtures must use `example.com`,

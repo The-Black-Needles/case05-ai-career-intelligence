@@ -153,8 +153,16 @@ def _has_high_entropy_material(text: str) -> bool:
 
 def _is_synthetic_fixture(rel: PurePosixPath) -> bool:
     return (
-        len(rel.parts) == 2
-        and ((rel.parts[0] == "config" and rel.name.endswith(".example.json")) or (rel.parts[0] == "data" and rel.suffix == ".json"))
+        (
+            len(rel.parts) == 2
+            and ((rel.parts[0] == "config" and rel.name.endswith(".example.json"))
+                 or (rel.parts[0] == "data" and rel.suffix == ".json"))
+        )
+        or (
+            len(rel.parts) == 3
+            and rel.parts[:2] == ("data", "demo_readiness_cases")
+            and rel.suffix == ".json"
+        )
     )
 
 

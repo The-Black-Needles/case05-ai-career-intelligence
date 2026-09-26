@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "assessment_id": "synthetic_future_target",
+  "coverage_state": "COMPLETE",
+  "requirements": [
+    {"requirement_id": "r1", "statement": "Fictional role: demonstrate a production workflow change.", "centrality": "CENTRAL", "evidence_expectation": "PRODUCTION"}
+  ],
+  "candidate_evidence": [
+    {"evidence_id": "e1", "statement": "Fictional course: learned workflow concepts.", "evidence_level": "EDUCATION", "production_scope": "NOT_DECLARED", "limitations": ["Course exercise only."]}
+  ],
+  "links": [
+    {"requirement_id": "r1", "evidence_ids": [], "support_state": "NOT_EVIDENCED"}
+  ]
+}

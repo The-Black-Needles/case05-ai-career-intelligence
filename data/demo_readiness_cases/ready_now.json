@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "assessment_id": "synthetic_ready_now",
+  "coverage_state": "COMPLETE",
+  "requirements": [
+    {"requirement_id": "r1", "statement": "Fictional role: document an automation workflow.", "centrality": "CENTRAL", "evidence_expectation": "GENERAL"},
+    {"requirement_id": "r2", "statement": "Fictional role: explain a production operations change.", "centrality": "CENTRAL", "evidence_expectation": "PRODUCTION"},
+    {"requirement_id": "r3", "statement": "Fictional role: know an optional visualization tool.", "centrality": "SECONDARY", "evidence_expectation": "GENERAL"},
+    {"requirement_id": "r4", "statement": "Fictional role: collaborate with a product team.", "centrality": "RESPONSIBILITY_ONLY", "evidence_expectation": "GENERAL"}
+  ],
+  "candidate_evidence": [
+    {"evidence_id": "e1", "statement": "Fictional project: documented a small automation workflow.", "evidence_level": "PROJECT", "production_scope": "NOT_PRODUCTION", "limitations": []},
+    {"evidence_id": "e2", "statement": "Fictional professional work: reviewed a production operations change.", "evidence_level": "PROFESSIONAL", "production_scope": "PRODUCTION", "limitations": ["Only one bounded workflow is declared."]}
+  ],
+  "links": [
+    {"requirement_id": "r1", "evidence_ids": ["e1"], "support_state": "DIRECT"},
+    {"requirement_id": "r2", "evidence_ids": ["e2"], "support_state": "DIRECT"},
+    {"requirement_id": "r3", "evidence_ids": [], "support_state": "NOT_EVIDENCED"},
+    {"requirement_id": "r4", "evidence_ids": [], "support_state": "NOT_EVIDENCED"}
+  ]
+}

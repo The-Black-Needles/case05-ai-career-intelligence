@@ -10,7 +10,7 @@ product or operational module in this repository.
 
 ## Publication status
 
-**PUBLIC FOUNDATION WITH A NARROW LOCAL SYNTHETIC DEMO ONLY**
+**PUBLIC FOUNDATION WITH TWO NARROW LOCAL SYNTHETIC DEMOS ONLY**
 
 ### IMPLEMENTED
 
@@ -27,6 +27,8 @@ product or operational module in this repository.
 - A local deterministic synthetic requirement/evidence assessment demo using
   strict validation, explicit ID linkage, factual raw counts, and mandatory
   human review
+- A separate local synthetic readiness and evidence-boundary demonstration
+  using explicit characterization, strict validation, and mandatory human review
 
 ### PLANNED / NOT ACTIVE
 
@@ -35,9 +37,11 @@ transformation, normalization, enrichment, identity resolution, deduplication,
 eligibility gates, semantic classification, requirement/evidence matching,
 scoring, ranking, recommendation, Candidate Readiness, LLM evaluation, report
 generation, security enforcement, agents, and a Decision Model runtime. None of
-those broader capabilities is implemented or active here. The local demo adds
-no real-job collection, semantic matching, scoring, readiness, ranking,
-recommendation, AI/LLM, or agent runtime. The record contract adds no
+those broader capabilities is implemented or active here. The original local
+linkage demo adds no real-job collection, semantic matching, scoring, readiness, ranking,
+recommendation, AI/LLM, or agent runtime. The new synthetic readiness layer
+does not evaluate real jobs or candidates and makes no application decision.
+The record contract adds no
 parsing, serialization, fingerprints, deduplication keys, enums, AI behavior,
 or runtime pipeline and does not establish an operational AI Job Radar.
 
@@ -54,6 +58,13 @@ Decision Model V2 remains `DRAFT_NOT_ACTIVE`.
 synthetic explicit-ID requirement/evidence linkage demo. It does not activate
 Decision Model V2, collection, semantic matching, scoring, readiness, ranking,
 recommendation, or AI functionality. Human review remains mandatory.
+
+### Local synthetic readiness demo
+
+`docs/SYNTHETIC_READINESS_DEMO.md` describes the second, independent public
+demo. It characterizes fictional assessments with explicit evidence boundaries
+and a conservative deterministic policy. It does not implement the private
+operational Candidate Readiness system or activate Decision Model V2.
 
 ## Target architecture
 

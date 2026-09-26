@@ -4,9 +4,9 @@
 
 This repository is releasable only as a public scaffold and narrow
 non-operational foundation. Public release must not imply that AI Job Radar,
-AI Career Intelligence, Candidate Readiness, scoring, collection, evaluation,
-reporting, agents, security enforcement, or a Decision Model runtime are
-implemented.
+AI Career Intelligence, real-job Candidate Readiness, weighted scoring,
+collection, evaluation, reporting, agents, security enforcement, or a Decision
+Model runtime are implemented. The local readiness demo uses fictional inputs.
 
 ## Required local checks
 
@@ -32,6 +32,12 @@ Expected results:
   executable scoring code and proportionate tests are present.
 - Confirm that `config/*.example.json` and `data/*.json` remain synthetic and
   satisfy the synthetic provenance contract.
+- Confirm all `data/demo_readiness_cases/*.json` fixtures are fictional and
+  contain no private profile, application history, real job, employer, or
+  candidate data.
+- Confirm synthetic readiness claims do not imply the private operational
+  runtime and that Decision Model V2 remains inactive unless separately
+  implemented and validated in this public repository.
 - Confirm that `config/public-sanitizer.local.json`, if present locally, is not
   committed.
 - Review Git history and repository hosting settings separately before public
@@ -42,7 +48,8 @@ Expected results:
 ## Release boundary
 
 The public candidate may contain documentation, package metadata, synthetic
-examples, an empty reference dataset, scaffold tests, the public sanitizer, and
-the strict in-memory `PublicJobRecord` contract. Any future operational module
+examples, an empty reference dataset, local synthetic demos and tests, the
+public sanitizer, and the strict in-memory `PublicJobRecord` contract. Any
+future operational module
 or dataset needs its own implementation evidence, tests, and public/private
 boundary review before being described as active.

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "assessment_id": "synthetic_moderate_gaps",
+  "coverage_state": "COMPLETE",
+  "requirements": [
+    {"requirement_id": "r1", "statement": "Fictional role: document an automation workflow.", "centrality": "CENTRAL", "evidence_expectation": "GENERAL"},
+    {"requirement_id": "r2", "statement": "Fictional role: operate a workflow professionally.", "centrality": "CENTRAL", "evidence_expectation": "PROFESSIONAL"}
+  ],
+  "candidate_evidence": [
+    {"evidence_id": "e1", "statement": "Fictional project: documented a small automation workflow.", "evidence_level": "PROJECT", "production_scope": "NOT_PRODUCTION", "limitations": []}
+  ],
+  "links": [
+    {"requirement_id": "r1", "evidence_ids": ["e1"], "support_state": "DIRECT"},
+    {"requirement_id": "r2", "evidence_ids": ["e1"], "support_state": "PARTIAL"}
+  ]
+}

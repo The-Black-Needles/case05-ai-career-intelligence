@@ -4,9 +4,12 @@
 
 **DRAFT_NOT_ACTIVE**
 
-This document is conceptual target-state material only. The public scaffold has
-no executable weighted scoring, Candidate Readiness assessment, eligibility
-gate, classification pipeline, report policy, or Decision Model runtime.
+This document is conceptual target-state material only. A narrow deterministic
+synthetic readiness demonstration exists for fictional inputs. The public
+repository has no real-job Candidate Readiness assessment and no executable weighted scoring.
+It also has no Company Quality, Life Compatibility, application recommendation,
+eligibility gate, classification pipeline, report policy, or Decision Model
+runtime. The synthetic policy is documented separately and is not this model.
 
 ## Conceptual design principle
 
@@ -52,8 +55,9 @@ Any future design and implementation must preserve all of the following:
 - evidence levels do not silently become numeric weights
 - requirement types do not silently become scoring weights
 
-These rules constrain interpretation; they do not claim that an evidence model
-or its enforcement currently exists.
+These rules constrain interpretation. The separate synthetic readiness demo
+enforces its declared evidence-scope boundaries for fictional inputs only; it
+does not implement a real-job evidence model or this weighted decision model.
 
 ## Conceptual report policy
 
